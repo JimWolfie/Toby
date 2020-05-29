@@ -6,7 +6,7 @@ import os
 import xml.etree.ElementTree as ET
 from math_utils import number_to_base, conv_dict
 import scryfall_utils
-scryfall_cache = scryfall_cache.json()
+scryfall_cache = scryfall_utils.ScryfallCache()
 
 # CHANGE TO THE FORMAT BEING PLAYED
 tourney_format = "commander"
