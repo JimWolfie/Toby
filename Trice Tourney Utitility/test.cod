@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cockatrice_deck version="1">
+    <deckname></deckname>
+    <comments>Fish hulk with grind elements and a wheel. Intended for grindy pods with other experienced players.</comments>
+    <zone name="main">
+        <card number="1" name="Abrupt Decay"/>
+        <card number="1" name="Ad Nauseam"/>
+        <card number="1" name="Arbor Elf"/>
+        <card number="1" name="Assassin's Trophy"/>
+        <card number="1" name="Avacyn's Pilgrim"/>
+        <card number="1" name="Aven Mindcensor"/>
+        <card number="1" name="Bayou"/>
+        <card number="1" name="Birds of Paradise"/>
+        <card number="1" name="Bloodstained Mire"/>
+        <card number="1" name="Bloom Tender"/>
+        <card number="1" name="Boseiju, Who Shelters All"/>
+        <card number="1" name="Brainstorm"/>
+        <card number="1" name="Breeding Pool"/>
+        <card number="1" name="Carpet of Flowers"/>
+        <card number="1" name="Cephalid Illusionist"/>
+        <card number="1" name="Chain of Vapor"/>
+        <card number="1" name="Chrome Mox"/>
+        <card number="1" name="City of Brass"/>
+        <card number="1" name="Command Tower"/>
+        <card number="1" name="Dark Confidant"/>
+        <card number="1" name="Deathrite Shaman"/>
+        <card number="1" name="Demonic Consultation"/>
+        <card number="1" name="Demonic Tutor"/>
+        <card number="1" name="Diabolic Intent"/>
+        <card number="1" name="Dispel"/>
+        <card number="1" name="Dovin's Veto"/>
+        <card number="1" name="Elves of Deep Shadow"/>
+        <card number="1" name="Elvish Mystic"/>
+        <card number="1" name="Exotic Orchard"/>
+        <card number="1" name="Flash"/>
+        <card number="1" name="Flooded Strand"/>
+        <card number="1" name="Flusterstorm"/>
+        <card number="1" name="Forbidden Orchard"/>
+        <card number="1" name="Force of Negation"/>
+        <card number="1" name="Force of Will"/>
+        <card number="1" name="Gemstone Caverns"/>
+        <card number="1" name="Gilded Drake"/>
+        <card number="1" name="Gitaxian Probe"/>
+        <card number="1" name="Grand Abolisher"/>
+        <card number="1" name="Imperial Seal"/>
+        <card number="1" name="Jace, Wielder of Mysteries"/>
+        <card number="1" name="Lim-Dûl's Vault"/>
+        <card number="1" name="Llanowar Elves"/>
+        <card number="1" name="Lotus Petal"/>
+        <card number="1" name="Mana Confluence"/>
+        <card number="1" name="Mana Crypt"/>
+        <card number="1" name="Mana Drain"/>
+        <card number="1" name="Marsh Flats"/>
+        <card number="1" name="Mental Misstep"/>
+        <card number="1" name="Misty Rainforest"/>
+        <card number="1" name="Morphic Pool"/>
+        <card number="1" name="Mox Diamond"/>
+        <card number="1" name="Mystic Remora"/>
+        <card number="1" name="Mystical Tutor"/>
+        <card number="1" name="Neoform"/>
+        <card number="1" name="Noble Hierarch"/>
+        <card number="1" name="Nomads en-Kor"/>
+        <card number="1" name="Noxious Revival"/>
+        <card number="1" name="Nurturing Peatland"/>
+        <card number="1" name="Overgrown Tomb"/>
+        <card number="1" name="Pact of Negation"/>
+        <card number="1" name="Polluted Delta"/>
+        <card number="1" name="Ponder"/>
+        <card number="1" name="Protean Hulk"/>
+        <card number="1" name="Savannah"/>
+        <card number="1" name="Scalding Tarn"/>
+        <card number="1" name="Silence"/>
+        <card number="1" name="Sol Ring"/>
+        <card number="1" name="Spellseeker"/>
+        <card number="1" name="Summoner's Pact"/>
+        <card number="1" name="Swan Song"/>
+        <card number="1" name="Sylvan Library"/>
+        <card number="1" name="Tainted Pact"/>
+        <card number="1" name="Tarnished Citadel"/>
+        <card number="1" name="Thassa's Oracle"/>
+        <card number="1" name="Tropical Island"/>
+        <card number="1" name="Tundra"/>
+        <card number="1" name="Underground Sea"/>
+        <card number="1" name="Vampiric Tutor"/>
+        <card number="1" name="Veil of Summer"/>
+        <card number="1" name="Verdant Catacombs"/>
+        <card number="1" name="Waterlogged Grove"/>
+        <card number="1" name="Watery Grave"/>
+        <card number="1" name="Wild Growth"/>
+        <card number="1" name="Windswept Heath"/>
+        <card number="1" name="Wooded Foothills"/>
+        <card number="1" name="Worldly Tutor"/>
+        <card number="1" name="Timetwister"/>
+        <card number="1" name="Notion Thief"/>
+        <card number="1" name="Island"/>
+        <card number="1" name="Snow-Covered Forest"/>
+        <card number="1" name="Rhystic Study"/>
+        <card number="1" name="Fyndhorn Elves"/>
+        <card number="1" name="Laboratory Maniac"/>
+        <card number="1" name="Smothering Tithe"/>
+        <card number="1" name="Reap"/>
+        <card number="1" name="Oakhame Adversary"/>
+        <card number="1" name="Preordain"/>
+        <card number="1" name="Thrasios, Triton Hero"/>
+        <card number="1" name="Tymna the Weaver"/>
+    </zone>
+    <zone name="side">
+        <card number="1" name="Richard Garfield, Ph.D."/>
+    </zone>
+</cockatrice_deck>

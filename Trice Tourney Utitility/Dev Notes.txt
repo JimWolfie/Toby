@@ -1,0 +1,40 @@
+Features
+	Must have
+		- Match Making
+		- Decklist Submissions
+	Nice to have
+		- Point Tracking
+		- Cut to Top X
+		- Deck Tracking
+
+Internal Structure (lots of questions)
+	Database (Mongo or ghetto DIY thing reading and writing to JSONs?)		
+		- Tournament
+			* Players
+			* Games
+			* ID
+			
+			* addPlayer(discord_user, trice_name)
+			* addGame(winner, losers)
+			* confirmGame(gameID, player)
+			* getLFG()
+			* getPlayer(discord_user)
+			* getGame(ID)
+			
+		- Player
+			* Decks
+			* Games
+			* Points
+			* Discord User
+			* Trice User
+			* isLFG
+		
+		- Game
+			* Losers
+			* Winner
+			* ID
+			* Time Stamp
+		
+		- Deck
+			* Decklist File Location
+			* Hash
