@@ -52,7 +52,7 @@ async def myID(ctx):
 async def register(ctx, tricename: str):
     '''?register *trice name*'''
     userid = str(ctx.message.author.id)
-    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\players.json', "r") as send:
+    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
         data = json.load(send)
     if not userid in data:
         data[userid] = {}
@@ -64,7 +64,7 @@ async def register(ctx, tricename: str):
         await ctx.send('you are now registered')      
     else:
        await ctx.send('you have already registered')
-    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\players.json', "w") as send:
+    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "w") as send:
         json.dump(data, send, indent=4)
 
 @bot.command(name='getGames')
