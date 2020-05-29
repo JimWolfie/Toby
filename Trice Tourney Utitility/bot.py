@@ -69,7 +69,7 @@ async def register(ctx, tricename: str):
 
 @bot.command(name='getGames')
 async def getGames(ctx, user: str):
-    players = database.getPlayer(user)
+    players = Tourney.getPlayer(user)
     response = "List of Matching Players and Their Games"
     for player in players:
         response += "\n"+player['name']
