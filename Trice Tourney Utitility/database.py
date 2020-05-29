@@ -1,7 +1,9 @@
 import json
 import time
 import hashlib
-from Deck_Checker import generate_hashes
+from .Deck_Checker import generate_hashes
+
+
 
 class Tournament:
     def __init__ (self, ID, close_date):

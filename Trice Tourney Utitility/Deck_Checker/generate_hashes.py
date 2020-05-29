@@ -6,7 +6,7 @@ import os
 import xml.etree.ElementTree as ET
 
 from .math_utils import number_to_base, conv_dict
-from Deck_Checker import scryfall_utils
+import scryfall_utils
 
 
 # CHANGE TO THE FORMAT BEING PLAYED
@@ -217,6 +217,7 @@ def getHash(file_location):
             return True, trice_hash(deck_str)
     except ValueError as err:
         return False, "Error: {}".format(err)
+
 
 ##
 def process_decks():
