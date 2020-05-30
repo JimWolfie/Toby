@@ -1,13 +1,16 @@
-from collections import defaultdict, namedtuple
 import glob
 import hashlib
 import itertools
 import os
 import xml.etree.ElementTree as ET
-from .math_utils import number_to_base, conv_dict
-import scryfall_utils
+from collections import defaultdict, namedtuple
 
-scryfall_cache = scryfall_utils.ScryfallCache()
+import Trice_Utility.scryfall_utils
+
+from .math_utils import conv_dict, number_to_base
+from Trice_Utility.scryfall_utils import ScryfallCache
+
+scryfall_cache = ScryfallCache()
 
 # CHANGE TO THE FORMAT BEING PLAYED
 tourney_format = "commander"
@@ -107,29 +110,29 @@ def get_max_color_id(deck: Deck):
     main, side = deck
     for card_name in main:
         card_data = scryfall_cache.get_card_data(card_name.split("(")[0].strip())
-        if scryfall_utils.can_be_commander(card_data):
-            color_id = scryfall_utils.get_color_id(card_data)
+        if scryfall_cache.can_be_commander(card_data):
+            color_id = scryfall_cache.get_color_id(card_data)
             if len(color_id) > len(largest_id):
                 largest_id = color_id
 
-            if "partner" in scryfall_utils.get_oracle_text(card_data):
+            if "partner" in scryfall_cache.get_oracle_text(card_data):
                 partners.add(card_name.split("(")[0].strip())
 
     for card_name in side:
         card_data = scryfall_cache.get_card_data(card_name.split("(")[0].strip())
-        if scryfall_utils.can_be_commander(card_data):
-            color_id = scryfall_utils.get_color_id(card_data)
+        if scryfall_cache.can_be_commander(card_data):
+            color_id = scryfall_cache.get_color_id(card_data)
             if len(color_id) > len(largest_id):
                 largest_id = color_id
 
-            if "partner" in scryfall_utils.get_oracle_text(card_data):
+            if "partner" in scryfall_cache.get_oracle_text(card_data):
                 partners.add(card_name.split("(")[0].strip())
 
     for c1, c2 in itertools.combinations(partners, r=2):
         c1_data = scryfall_cache.get_card_data(c1)
         c2_data = scryfall_cache.get_card_data(c2)
-        c1_colors = scryfall_utils.get_color_id(c1_data)
-        c2_colors = scryfall_utils.get_color_id(c2_data)
+        c1_colors = scryfall_cache.get_color_id(c1_data)
+        c2_colors = scryfall_cache.get_color_id(c2_data)
         color_id = c1_colors.union(c2_colors)
         if len(color_id) > len(largest_id):
             largest_id = color_id
@@ -181,7 +184,7 @@ def check_deck_legality(deck: Deck, tourney_format: str = tourney_format):
             card_data = scryfall_cache.get_card_data(card_name.split("(")[0].strip())
             count = combined[card_name.split("(")[0].strip()]
             try:
-                scryfall_utils.card_ok(
+                scryfall_cache.card_ok(
                     card_data,
                     count,
                     tourney_format=tourney_format,
@@ -190,7 +193,7 @@ def check_deck_legality(deck: Deck, tourney_format: str = tourney_format):
                 )
             except ValueError as err:
                 if (
-                    scryfall_utils.is_in_unset(card_data)
+                    scryfall_cache.is_in_unset(card_data)
                     and not has_uncard
                     and count == 1
                     and card_name in side
