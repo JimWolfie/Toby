@@ -13,7 +13,7 @@ tourney_format = "commander"
 
 # CHANGE THESE TO THE CORRECT ONES
 output_file = "output.txt"
-cod_folder = "./cods"  # folder containing player folders containing cod files
+cod_folder = "Trice Tourney Utitility\decks"  # folder containing player folders containing cod files
 
 Deck = namedtuple("Deck", "Maindeck Sideboard")
 
