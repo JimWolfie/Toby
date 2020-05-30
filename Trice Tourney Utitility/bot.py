@@ -12,6 +12,8 @@ import database
 import json
 import datetime
 import argparse
+import generate_hashes
+import glob
 
 
 
@@ -22,6 +24,7 @@ MAX_DECKS = 3
 client = discord.Client()
 bot = commands.Bot(command_prefix='?')
 close_date = "2020-06-13 12:00"
+
 
 Tourney = database.Tournament(id(bot), close_date)
 
@@ -122,6 +125,42 @@ async def getGames(ctx):
 async def lfg(ctx):
     vers = Tourney.setLFG(ctx.message.author)
     await vers
+
+@bot.command(name=getHash)
+async def hashreturn(ctx, user: str):
     
+    #check if working 
+    working = True
+    member = findUser(user)
+    if member is None:
+        response = "member not found sorry"
+        await ctx.send(response) 
+        working = False 
+    #get user id based off argument + fucntion 
+    #get all cod files in dir
+    if working:
+        path = r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby'
+        location = path + 'decks/{}-{}/*'.format(member.name,member.id)
+        
+        for file in glob.glob(location):
+            try:
+                deck = file
+                
+                nameTuple = generate_hashes.convert_to_deck(deck)
+                delimString = generate_hashes.convert_deck_to_deck_str(nameTuple)
+                triceHash = generate_hashes.trice_hash(delimString)
+                await ctx.send('one')
+                await ctx.send(triceHash)
+            except:
+                await ctx.send("End of List :P")
+            finally:
+                await ctx.send("hope this helps")
+                
+        
+
+async def findUser(user: str):
+    test = user
+    member = discord.utils.find(lambda m: m.name == test, GUILD.members)
+    await member  
 bot.run(TOKEN)    
 client.run(TOKEN)
