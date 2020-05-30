@@ -144,9 +144,7 @@ async def hashreturn(ctx, user: str):
         
         for file in glob.glob(location):
             try:
-                deck = file
-                
-                nameTuple = generate_hashes.convert_to_deck(deck)
+                nameTuple = generate_hashes.convert_to_deck(file)
                 delimString = generate_hashes.convert_deck_to_deck_str(nameTuple)
                 triceHash = generate_hashes.trice_hash(delimString)
                 await ctx.send('one')
