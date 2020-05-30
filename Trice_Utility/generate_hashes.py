@@ -6,14 +6,15 @@ import os
 import xml.etree.ElementTree as ET
 from .math_utils import number_to_base, conv_dict
 import scryfall_utils
+
 scryfall_cache = scryfall_utils.ScryfallCache()
 
 # CHANGE TO THE FORMAT BEING PLAYED
 tourney_format = "commander"
 
 # CHANGE THESE TO THE CORRECT ONES
-output_file = "output.txt"
-cod_folder = "Trice Tourney Utitility\decks"  # folder containing player folders containing cod files
+output_file = r"C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice_Utility\output.txt"
+cod_folder = r"C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice_Utility\decks"  # folder containing player folders containing cod files
 
 Deck = namedtuple("Deck", "Maindeck Sideboard")
 
