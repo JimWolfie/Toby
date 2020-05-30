@@ -126,12 +126,12 @@ async def lfg(ctx):
     vers = Tourney.setLFG(ctx.message.author)
     await vers
 
-@bot.command(name=getHash)
+@bot.command(name='getHash')
 async def hashreturn(ctx, user: str):
     
     #check if working 
     working = True
-    member = findUser(user)
+    member =  discord.utils.find(lambda m: m.name == user, GUILD.members)
     if member is None:
         response = "member not found sorry"
         await ctx.send(response) 
@@ -153,12 +153,6 @@ async def hashreturn(ctx, user: str):
                 await ctx.send("End of List :P")
             finally:
                 await ctx.send("hope this helps")
-                
-        
 
-async def findUser(user: str):
-    test = user
-    member = discord.utils.find(lambda m: m.name == test, GUILD.members)
-    await member  
 bot.run(TOKEN)    
 client.run(TOKEN)
