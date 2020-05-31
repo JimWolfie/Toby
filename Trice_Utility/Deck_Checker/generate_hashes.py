@@ -4,7 +4,7 @@ import hashlib
 import itertools
 import os
 import xml.etree.ElementTree as ET
-from .math_utils import number_to_base, conv_dict
+from math_utils import number_to_base, conv_dict
 import scryfall_utils
 
 scryfall_cache = scryfall_utils.ScryfallCache()

@@ -1,7 +1,7 @@
 import json
 import time
 import hashlib
-import generate_hashes
+from .Deck_Checker import generate_hashes
 
 
 

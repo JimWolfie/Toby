@@ -12,7 +12,7 @@ import database
 import json
 import datetime
 import argparse
-import generate_hashes
+from .Deck_Checker import generate_hashes
 import glob
 
 
