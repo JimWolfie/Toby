@@ -1,8 +1,8 @@
-import hashlib
 import json
 import time
+import hashlib
+import generate_hashes
 
-from Trice_Utility import generate_hashes
 
 
 class Tournament:
@@ -107,3 +107,4 @@ class DataBase:
     def save(self):
         with open(self.file_location, "w", encoding="utf-8") as file:
             json.dump(self.database, file)
+        

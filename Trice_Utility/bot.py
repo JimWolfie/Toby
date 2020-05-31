@@ -8,11 +8,11 @@ import asyncio
 from dotenv import load_dotenv
 import requests
 import re
-from Trice_Utility import database
+import database
 import json
 import datetime
 import argparse
-from Trice_Utility import generate_hashes
+import generate_hashes
 import glob
 
 
