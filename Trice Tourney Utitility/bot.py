@@ -129,10 +129,10 @@ async def lfg(ctx):
     await vers
 
 @bot.command(name='getHash')
-async def convert(self, ctx, argument):
+async def convert(ctx, argument):
     try:
-       member = await commands.MemberConverter().convert(ctx, argument)
-       await ctx.send(member)
+        member = await commands.MemberConverter().convert(ctx, argument)
+        await ctx.send(member.id)
     except commands.BadArgument:
         try:
             return int(argument, base=10)
@@ -140,19 +140,8 @@ async def convert(self, ctx, argument):
             raise commands.BadArgument(
                 f"{argument} is not a valid member or member ID."
             ) from None
-    else:
-            can_execute = (
-                ctx.author.id == ctx.bot.owner_id
-                or ctx.author == ctx.guild.owner
-                or ctx.author.top_role < m.top_role
-            )
-            if not can_execute:
-                raise commands.BadArgument(
-                    "exception raised"
-                    
-                )
-            return member.id 
-    #get user id based off argument + fucntion 
+            
+    
     #get all cod files in dir
     # if working:
     #     path = r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby'
