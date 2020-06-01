@@ -2,7 +2,7 @@
 import os
 import random
 import discord
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot 
 from discord.ext import commands
 import asyncio
 from dotenv import load_dotenv
@@ -14,6 +14,7 @@ import datetime
 import argparse
 import generate_hashes
 import glob
+from discord.ext.commands.converter import MemberConverter
 
 
 
@@ -27,6 +28,7 @@ close_date = "2020-06-13 12:00"
 
 
 Tourney = database.Tournament(id(bot), close_date)
+
 
 @client.event
 async def on_ready():
@@ -127,32 +129,48 @@ async def lfg(ctx):
     await vers
 
 @bot.command(name='getHash')
-async def hashreturn(ctx, user: str):
-    
-    #check if working 
-    working = True
-    member =  discord.utils.find(lambda m: m.name == user, GUILD.members)
-    if member is None:
-        response = "member not found sorry"
-        await ctx.send(response) 
-        working = False 
+async def convert(self, ctx, argument):
+    try:
+       member = await commands.MemberConverter().convert(ctx, argument)
+       await ctx.send(member)
+    except commands.BadArgument:
+        try:
+            return int(argument, base=10)
+        except ValueError:
+            raise commands.BadArgument(
+                f"{argument} is not a valid member or member ID."
+            ) from None
+    else:
+            can_execute = (
+                ctx.author.id == ctx.bot.owner_id
+                or ctx.author == ctx.guild.owner
+                or ctx.author.top_role < m.top_role
+            )
+            if not can_execute:
+                raise commands.BadArgument(
+                    "exception raised"
+                    
+                )
+            return member.id 
     #get user id based off argument + fucntion 
     #get all cod files in dir
-    if working:
-        path = r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby'
-        location = path + 'decks/{}-{}/*'.format(member.name,member.id)
+    # if working:
+    #     path = r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby'
+    #     location = path + 'decks/{}-{}/*'.format(member.name,member.id)
         
-        for file in glob.glob(location):
-            try:
-                nameTuple = generate_hashes.convert_to_deck(file)
-                delimString = generate_hashes.convert_deck_to_deck_str(nameTuple)
-                triceHash = generate_hashes.trice_hash(delimString)
-                await ctx.send('one')
-                await ctx.send(triceHash)
-            except:
-                await ctx.send("End of List :P")
-            finally:
-                await ctx.send("hope this helps")
+    #     for file in glob.glob(location):
+    #         try:
+    #             nameTuple = generate_hashes.convert_to_deck(file)
+    #             delimString = generate_hashes.convert_deck_to_deck_str(nameTuple)
+    #             triceHash = generate_hashes.trice_hash(delimString)
+    #             await ctx.send('one')
+    #             await ctx.send(triceHash)
+    #         except:
+    #             await ctx.send("End of List :P")
+    #         finally:
+    #             await ctx.send("hope this helps")
+
+
 
 bot.run(TOKEN)    
 client.run(TOKEN)
