@@ -4,6 +4,7 @@ import hashlib
 import generate_hashes
 
 
+generate_hashes
 
 class Tournament:
     def __init__ (self, ID, close_date):
