@@ -26,8 +26,8 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='?')
 close_date = "2020-06-13 12:00"
 
-
-Tourny = database.DataBase()
+Tourny = database.Tournament(id(bot), close_date)
+# Tourny = database.DataBase(self)
 
 
 @client.event
@@ -74,7 +74,7 @@ async def register(ctx, tricename: str):
 
 @bot.command(name='getGames')
 async def getGames(ctx, user: str):
-    players = database.getPlayer(user)
+    players = Tourny.getPlayer(user)
     response = "List of Matching Players and Their Games"
     for player in players:
         response += "\n"+player['name']
@@ -125,7 +125,7 @@ async def getGames(ctx):
 
 @bot.command(name='LFG')
 async def lfg(ctx):
-    vers = database.setLFG(ctx.message.author)
+    vers = Tourny.setLFG(ctx.message.author)
     await vers
 
 @bot.command(name='getHash')
