@@ -27,7 +27,7 @@ bot = commands.Bot(command_prefix='?')
 close_date = "2020-06-13 12:00"
 
 
-Tourney = database.Tournament(id(bot), close_date)
+Tourny = database.DataBase()
 
 
 @client.event
@@ -74,7 +74,7 @@ async def register(ctx, tricename: str):
 
 @bot.command(name='getGames')
 async def getGames(ctx, user: str):
-    players = Tourney.getPlayer(user)
+    players = database.getPlayer(user)
     response = "List of Matching Players and Their Games"
     for player in players:
         response += "\n"+player['name']
@@ -125,7 +125,7 @@ async def getGames(ctx):
 
 @bot.command(name='LFG')
 async def lfg(ctx):
-    vers = Tourney.setLFG(ctx.message.author)
+    vers = database.setLFG(ctx.message.author)
     await vers
 
 @bot.command(name='getHash')
