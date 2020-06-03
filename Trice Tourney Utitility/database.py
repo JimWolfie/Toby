@@ -22,15 +22,7 @@ class Tournament:
         print("{} registered successfully".format(player))
 
     # def registerPlayer(self, discord_user):
-    #     # if discord_user not in self.players:
-    #     #     return self.register(self, discord_user, discord_user)
-    #     # else:
-    #     #     return discord_user
-    #     try:
-    #         val = self.register(self, discord_user, discord_user)
-    #         return val
-    #     except KeyError as err:
-    #         return "already registered"
+    #make a player object, add them to 
         
 
     def logGame(self, winner, losers):
@@ -89,7 +81,7 @@ class Game:
             str += " {}".format(loser)
         return str
     
-class DataBase:
+class Database:
     def __init__(self, file_location="database.json"):
         self.file_location=file_location
         try:
