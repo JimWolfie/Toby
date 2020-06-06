@@ -1,0 +1,7 @@
+from itertools import combinations,chain
+from collections import Counter
+from random import shuffle
+
+paired = set()
+
+aysnc def arrangeTables(Players[], tables, paired)

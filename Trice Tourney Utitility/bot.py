@@ -12,7 +12,7 @@ import database
 import json
 import datetime
 import argparse
-import generate_hashes
+
 import glob
 from discord.ext.commands.converter import MemberConverter
 
@@ -128,7 +128,7 @@ async def lfg(ctx):
     vers = Tourny.setLFG(ctx.message.author)
     await vers
 
-@bot.command(name='getHash')
+@bot.command(name='getuhhh')
 async def convert(ctx, argument):
     try:
         member = await commands.MemberConverter().convert(ctx, argument)

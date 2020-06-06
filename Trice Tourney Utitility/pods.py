@@ -2,8 +2,11 @@ from itertools import combinations,chain
 from collections import Counter
 from random import shuffle
 
+
+
 #arranges players into pods
 def arrangeTables(players, tables, alreadyPaired):
+    
     result        = [[]] * tables # list of foursomes
     tableNumber   = 0
     threesomes    = [combinations(range(2,players+1),3)] 
@@ -34,7 +37,7 @@ def arrangeTables(players, tables, alreadyPaired):
 def tournamentTables(players):
     tables  = players//4
     rounds  = []    # list of foursome for each round (one foresome per table)
-    paired  = set() # player-player tuples (lowest payer number first)
+    paired  = set()# player-player tuples (lowest payer number first)
     while True: # len(rounds) < 5
         roundTables = arrangeTables(players,tables,paired)
         if not roundTables: break
@@ -43,6 +46,14 @@ def tournamentTables(players):
             paired.update(combinations(foursome,2))
     return rounds
 
+
+# def tournamentPods(LFG):
+#     if LFG.length < 16:
+#         return 
+    
+#     return rounds
+
+    
 def updateLFG():
 
     #lfg adds to a queue in this model
