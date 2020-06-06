@@ -4,7 +4,7 @@ from random import shuffle
 
 
 
-#arranges players into pods
+#arranges players into pods based on currently in queue
 def arrangeTables(players, tables, alreadyPaired):
     
     result        = [[]] * tables # list of foursomes
@@ -53,26 +53,11 @@ def tournamentTables(players):
     
 #     return rounds
 
-    
-def updateLFG():
+    LFG = []
+def updateLFG(LFG):
 
-    #lfg adds to a queue in this model
-    #lfg tracks the time a player entered updateLFG
-    #updateLFG is called either when someone joins lfg
-    #or when 5 minutes have passed whichever is smaller
+    print("Pairing, those currently in queue please standby... \n") 
+    que = LFG 
 
-    #the order of importance in updating pods
-    #1. a player having less than 4 games
-    #2. wait time. 
-    #3. not playing someone twice
-
-    #if player wait time > 15 minutes 
-    #force pair that player (shit edge case i know.)
-
-    #if players queue > 16 
-    #run the pairing algorithm in arrangeTables/TournamentTables
-    #for thos 16. remove any pods off the queue
-
-    #if players queue <16 && 5 minute lfg call is made 
-    #run .arrangeTables
+   
     return -1

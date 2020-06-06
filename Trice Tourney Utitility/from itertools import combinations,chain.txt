@@ -4,4 +4,5 @@ from random import shuffle
 
 paired = set()
 
-aysnc def arrangeTables(Players[], tables, paired)
+aysnc def arrangeTables(Players[], tables, paired):
+

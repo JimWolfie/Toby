@@ -23,10 +23,14 @@ class Tournament:
 
     # def registerPlayer(self, discord_user):
     #make a player object, add them to 
-        
+    def registerPlayer(self, discord_ID, trice_name):
+
+        return None    
 
     def logGame(self, winner, losers):
-        winner.points += 3
+        winner.points += 30
+        for player in losers:
+            player.points -= 10
         players = losers + {winner}
         game = Game(winner, losers, len(self.games)+1)
         for player in players:
@@ -53,7 +57,7 @@ class Player:
         self.games = []
         self.isLFG = False
         self.decks = dict()
-        self.points=0
+        self.points=1000
     
     def addDeck(self, file_location, number):
         hash = generate_hashes.getHash(file_location)

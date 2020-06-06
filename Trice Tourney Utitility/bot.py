@@ -128,10 +128,11 @@ async def lfg(ctx):
     vers = Tourny.setLFG(ctx.message.author)
     await vers
 
-@bot.command(name='getuhhh')
+@bot.command(name='getHash')
 async def convert(ctx, argument):
     try:
         member = await commands.MemberConverter().convert(ctx, argument)
+        
         await ctx.send(member.id)
     except commands.BadArgument:
         try:
@@ -141,7 +142,10 @@ async def convert(ctx, argument):
                 f"{argument} is not a valid member or member ID."
             ) from None
             
-    
+async def name_to_id(ctx, name):
+    server = ctx.message.server
+    user_id = server.get_member_named(name).id
+    await user_id    
     #get all cod files in dir
     # if working:
     #     path = r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby'
