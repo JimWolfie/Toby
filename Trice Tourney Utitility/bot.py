@@ -56,10 +56,13 @@ async def myID(ctx):
 @bot.command()
 async def register(ctx, tricename: str):
     '''?register *trice name*'''
+    uusseerr = ctx.message.author.id
     userid = str(ctx.message.author.id)
+    t0_test = Tourny.register(client.get_user(uusseerr),tricename)
     with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
         data = json.load(send)
     if not userid in data:
+        
         data[userid] = {}
         data[userid]['trice'] = tricename
         data[userid]['registered'] = ('1')

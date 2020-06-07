@@ -15,11 +15,14 @@ class Tournament:
     def getPlayers(self):
         return self.players
     def register(self, discord_user, trice_name):
+
         if time.mktime(time.gmtime()) > time.mktime(self.close_date):
             return "Registration is closed"
         player = Player(discord_user,trice_name)
+        print("{}".format(player.discord_user))
         self.players[discord_user['id']] = player
         print("{} registered successfully".format(player))
+        
 
     # def registerPlayer(self, discord_user):
     #make a player object, add them to 
@@ -85,7 +88,7 @@ class Game:
             str += " {}".format(loser)
         return str
     
-class Database:
+class database:
     def __init__(self, file_location="database.json"):
         self.file_location=file_location
         try:
