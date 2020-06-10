@@ -45,19 +45,11 @@ def tournamentTables(players):
         for foursome in roundTables:
             paired.update(combinations(foursome,2))
     return rounds
-
+v = tournamentTables(16)
+print(v)
 
 # def tournamentPods(LFG):
 #     if LFG.length < 16:
 #         return 
     
 #     return rounds
-
-    LFG = []
-def updateLFG(LFG):
-
-    print("Pairing, those currently in queue please standby... \n") 
-    que = LFG 
-
-   
-    return -1
