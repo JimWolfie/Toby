@@ -15,8 +15,7 @@ class Tournament:
     def getPlayers(self):
         return self.players
     def register(self, discord_user, trice_name):
-        #discord user is a dictonary ! trice name is string
-
+   
         if time.mktime(time.gmtime()) > time.mktime(self.close_date):
             return "Registration is closed"
         player = Player(discord_user,trice_name)
@@ -27,10 +26,10 @@ class Tournament:
 
     # def registerPlayer(self, discord_user):
     #make a player object, add them to 
-    def registerPlayer(self, discord_ID, trice_name):
+    def registerPlayer(self, discord_name, discordID):
+        discord_user = {'name':discord_name, 'id': discordID} 
         
-
-        return None    
+        return discord_user
 
     def logGame(self, winner, losers):
         winner.points += 30
