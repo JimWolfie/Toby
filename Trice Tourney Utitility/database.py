@@ -44,6 +44,7 @@ class Tournament:
         player = self.players[discord_user['id']]
         return player.addDeck(file_location, number)
     def setLFG(self, discord_user, value=True):
+        
         try:
             player = self.players[discord_user['id']]
         except KeyError as err:
@@ -89,7 +90,7 @@ class Game:
             str += " {}".format(loser)
         return str
     
-class database:
+class DataBase:
     def __init__(self, file_location="database.json"):
         self.file_location=file_location
         try:

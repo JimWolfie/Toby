@@ -26,26 +26,36 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='?')
 close_date = "2020-06-13 12:00"
 
-Tourny = database.Tournament(id(bot), close_date)
+#db = database.DataBase(r"C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\database.json")
+Tourny = database.Tournament(0, close_date)
 # Tourny = database.DataBase(self)
 
 
-@client.event
+@bot.event
+# creates a listener
 async def on_ready():
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
-
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})')
-    
-    # print("Ready when you are")
-    # print("I am running on: " + bot.user.name)
-    # print("With the ID: " + bot.user.id)
-    # owner = await bot.get_user_info("115776222801166337")
-    # await bot.send_message(owner, "Ready", tts=True)
-    
+    # tells the bot to do the actions under this line whenever the bot starts (whenever the bot "is ready")
+    print('------------------------------')
+    # a break for organization
+    print('Logged in as')
+    print(bot.user.name)
+    # prints the discord name of the bot
+    print(bot.user.id)
+    # prints the user id of the bot(these are both just incase something goes wrong and to be a placeholder for
+    # organization)
+    print('------------------------------')
+    print('loading....')
+    for i in range(len(bot.guilds)):
+        # creates a loop to find the name, size and population of guilds the bot is in
+        guild = list(bot.guilds)[i]
+        population = len(guild.members)
+        size = len(guild.channels)
+        print('loading... {0}... has {1} members... has {2} channels... ready...'.format(guild, population, size))
+    # end of the loop
+    print('------------------------------')
+    print(datetime.datetime.now())
+    # prints the time the start up finishes
+    print('------------------------------')
     
     
 
@@ -91,7 +101,9 @@ async def getGames(ctx, user: str):
         for game in player['games']:
             response += "\t "+game.id
     await ctx.send(response)
-
+@bot.command(name='getRanks')
+async def getRanks(ctx):
+    Tourny
 @bot.command(name='saveDeck')
 async def getGames(ctx, num: str):
     print(num)
@@ -134,7 +146,9 @@ async def getGames(ctx):
 
 @bot.command(name='LFG')
 async def lfg(ctx):
-    vers = Tourny.setLFG(ctx.message.author)
+    discord_id = ctx.message.author.id
+    
+    vers = Tourny.setLFG(discord_id,True)
     await vers
 
 @bot.command(name='getHash')
