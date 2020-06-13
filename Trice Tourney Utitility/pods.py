@@ -45,7 +45,7 @@ def tournamentTables(players):
         for foursome in roundTables:
             paired.update(combinations(foursome,2))
     return rounds
-v = tournamentTables(16)
+v = tournamentTables(28)
 print(v)
 
 # def tournamentPods(LFG):

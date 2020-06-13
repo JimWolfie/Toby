@@ -21,8 +21,9 @@ class Tournament:
         player = Player(discord_user,trice_name)
         print("{}".format(player.discord_user))
         print("{}".format(player.trice_name))
-        
-        self.players[discord_user['id']] = player
+        x = discord_user['id']
+        print("{}".format(x))
+        self.players[discord_user['name']] = player
         print("{} registered successfully".format(player))
         print ("{} is discord_user".format(player.discord_user))
         print ("{} is trice_name".format(player.trice_name))
@@ -61,7 +62,8 @@ class Tournament:
         #     print(val)
         # except KeyError as err:
         #     return "Player {} not registered.".format(discord_user['name'])
-        player = players.get(discord_user)
+        
+        player = self.players[discord_user['name']]
         if not player == None:
             player.isLFG = value
             if value:

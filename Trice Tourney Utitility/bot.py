@@ -26,6 +26,7 @@ MAX_DECKS = 3
 client = discord.Client()
 bot = commands.Bot(command_prefix='?')
 close_date = "2020-06-13 12:00"
+LFG = []
 
 #db = database.DataBase(r"C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\database.json")
 Tourny = database.Tournament(0, close_date)
@@ -149,36 +150,41 @@ async def getGames(ctx):
 
 @bot.command(name='LFG')
 async def lfg(ctx):
+
+    # val = Tourny.setLFG(ctx.author.id)
+    
     userid = str(ctx.message.author.id)
+    userID = ctx.message.author.name
     with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
         data = json.load(send)
-    if  userid in data:
-        with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\LFG.json', "r") as send:
-            compete = json.load(send)
-            if not userid in compete:
-                
-                compete[userid] = {}
-                
-                compete[userid]['LFG'] = ('1')
-                print(ctx.message.author.id)
-                
-                
-                await ctx.send('you are now looking for game')      
-            elif userid in compete:
-                if compete[userid]['LFG'] == ('1'):
-                    compete[userid]['LFG']= ('0')
-                    await ctx.send('you are not looking for a game')
-                elif compete[userid]['LFG'] == ('0'):
-                    compete[userid]['LFG']= ('1')
-                    await await ctx.send('you are now looking for game')
-            else:
-                await ctx.send('you have not registered')
-            with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\LFG.json', "w") as send:
-                json.dump(data, send, indent=4)
-    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "w") as send:
-        json.dump(data, send, indent=4)
+    if  not userid in data:
+        LFG.append(userid)
+        await ctx.send("you are now looking for game")
+    elif userid in data:
+        if userid in LFG:
+            LFG.remove(userID)
+            await ctx.send("you are no longer LFG")
+        else:
+            LFG.append(userID)
+            await ctx.send("you are now looking for game")
     
+    
+@bot.command(name='isLFG')
+async def isLFG(ctx):
+    if ctx.message.author.id == (115776222801166337):
+        for index, value in enumerate(LFG): 
+            print(index, value) 
+            await ctx.send(value)
+        else: 
+            await ctx.send("lol you're not the illustrious JimWolfie")
+        # names = await client.fetch_user((value))
+        # await ctx.send(names)
+        
+        
 
+        
+    
+        
 
 
 @bot.command(name='getHash')
