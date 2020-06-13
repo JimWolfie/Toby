@@ -15,6 +15,7 @@ import argparse
 
 import glob
 from discord.ext.commands.converter import MemberConverter
+import generate_hashes
 
 
 
@@ -92,6 +93,7 @@ async def register(ctx, tricename: str):
     with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "w") as send:
         json.dump(data, send, indent=4)
 
+
 @bot.command(name='getGames')
 async def getGames(ctx, user: str):
     players = Tourny.getPlayer(user)
@@ -147,11 +149,37 @@ async def getGames(ctx):
 
 @bot.command(name='LFG')
 async def lfg(ctx):
-    discord_id = ctx.message.author.id
-    discord_name = ctx.message.author.name
+    userid = str(ctx.message.author.id)
+    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
+        data = json.load(send)
+    if  userid in data:
+        with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\LFG.json', "r") as send:
+            compete = json.load(send)
+            if not userid in compete:
+                
+                compete[userid] = {}
+                
+                compete[userid]['LFG'] = ('1')
+                print(ctx.message.author.id)
+                
+                
+                await ctx.send('you are now looking for game')      
+            elif userid in compete:
+                if compete[userid]['LFG'] == ('1'):
+                    compete[userid]['LFG']= ('0')
+                    await ctx.send('you are not looking for a game')
+                elif compete[userid]['LFG'] == ('0'):
+                    compete[userid]['LFG']= ('1')
+                    await await ctx.send('you are now looking for game')
+            else:
+                await ctx.send('you have not registered')
+            with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\LFG.json', "w") as send:
+                json.dump(data, send, indent=4)
+    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "w") as send:
+        json.dump(data, send, indent=4)
     
-    vers = Tourny.setLFG(discord_id)
-    await vers
+
+
 
 @bot.command(name='getHash')
 async def convert(ctx, argument):
@@ -166,7 +194,14 @@ async def convert(ctx, argument):
             raise commands.BadArgument(
                 f"{argument} is not a valid member or member ID."
             ) from None
-            
+
+async def codToHash(member_ID, member_name):
+    dir = "decks/{}-{}/".format(member_name, member_ID)
+    file_location=dir
+
+
+    await 9
+
 async def name_to_id(ctx, name):
     server = ctx.message.server
     user_id = server.get_member_named(name).id

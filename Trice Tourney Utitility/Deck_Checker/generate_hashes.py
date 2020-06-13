@@ -244,3 +244,4 @@ def process_decks():
                     except ValueError as err:
                         output.write("\t{}\n".format(err))
                         print("Deck '{}' has error '{}'".format(file_path, err))
+    return output
