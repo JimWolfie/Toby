@@ -20,8 +20,12 @@ class Tournament:
             return "Registration is closed"
         player = Player(discord_user,trice_name)
         print("{}".format(player.discord_user))
+        print("{}".format(player.trice_name))
+        
         self.players[discord_user['id']] = player
         print("{} registered successfully".format(player))
+        print ("{} is discord_user".format(player.discord_user))
+        print ("{} is trice_name".format(player.trice_name))
         
 
     # def registerPlayer(self, discord_user):
@@ -40,20 +44,30 @@ class Tournament:
         for player in players:
             player.games.add(game)
         self.games.add(game)
+    def printRecord(self):
+        listOfPlayers = getPlayers()
+        ranked = [listOfPlayers]
+        firsorted = sorted(ranked, key=len)
+        finalsort = sorted(firsorted, key= lambda Player: Player.points, reverse = True )
+        return finalsort    
     def addDeck(self, discord_user, file_location, number):
         player = self.players[discord_user['id']]
         return player.addDeck(file_location, number)
     def setLFG(self, discord_user, value=True):
         
-        try:
-            player = self.players[discord_user['id']]
-        except KeyError as err:
-            return "Player {} not registered.".format(discord_user['name'])
-        player.isLFG = value
-        if value:
-            return "Player {} successfully set as \"looking for group\"".format(discord_user['name'])
-        if not value:
-            return "Player {} successfully set as \"not looking for group\"".format(discord_user['name'])
+        # try:
+        #     player = self.players[discord_user['id']]
+        #     val = player.discord_user
+        #     print(val)
+        # except KeyError as err:
+        #     return "Player {} not registered.".format(discord_user['name'])
+        player = players.get(discord_user)
+        if not player == None:
+            player.isLFG = value
+            if value:
+                return "Player {} successfully set as \"looking for group\"".format(player.discord_user['name'])
+            if not value:
+                return "Player {} successfully set as \"not looking for group\"".format(player.discord_user['name'])
                 
 class Player:
     def __init__(self, user, trice_name):
@@ -63,13 +77,15 @@ class Player:
         self.isLFG = False
         self.decks = dict()
         self.points=1000
-    
+    #keydef getGames(self)
+
     def addDeck(self, file_location, number):
         hash = generate_hashes.getHash(file_location)
         if not hash[0]:
             return hash[1]
         self.decks[number] = Deck(file_location, hash[1])
         return "Deck {} updated, hash: {}".format(number, hash[1])
+
 
 class Deck:
     def __init__ (self, file_location, hash):

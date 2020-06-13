@@ -71,10 +71,11 @@ async def register(ctx, tricename: str):
     userid = str(ctx.message.author.id)
     uwu = ctx.message.author.name
     print(uwu)
-    to_test = Tourny.registerPlayer(rawr, uwu)
+    to_test = Tourny.registerPlayer(uwu, rawr)
     print(to_test)
     t0_test = Tourny.register(to_test,tricename)
-    
+    varsity = Tourny.getPlayers
+    print("{}".format(varsity))
     with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
         data = json.load(send)
     if not userid in data:
@@ -147,8 +148,9 @@ async def getGames(ctx):
 @bot.command(name='LFG')
 async def lfg(ctx):
     discord_id = ctx.message.author.id
+    discord_name = ctx.message.author.name
     
-    vers = Tourny.setLFG(discord_id,True)
+    vers = Tourny.setLFG(discord_id)
     await vers
 
 @bot.command(name='getHash')
