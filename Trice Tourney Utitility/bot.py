@@ -73,11 +73,11 @@ async def register(ctx, tricename: str):
     userid = str(ctx.message.author.id)
     uwu = ctx.message.author.name
     print(uwu)
-    to_test = Tourny.registerPlayer(uwu, rawr)
-    print(to_test)
-    t0_test = Tourny.register(to_test,tricename)
-    varsity = Tourny.getPlayers
-    print("{}".format(varsity))
+    # to_test = Tourny.registerPlayer(uwu, rawr)
+    # print(to_test)
+    # t0_test = Tourny.register(to_test,tricename)
+    # varsity = Tourny.getPlayers
+    # print("{}".format(varsity))
     with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "r") as send:
         data = json.load(send)
     if not userid in data:
@@ -161,13 +161,14 @@ async def lfg(ctx):
         LFG.append(userid)
         await ctx.send("you are now looking for game")
     elif userid in data:
-        if userid in LFG:
+        if userID in LFG:
             LFG.remove(userID)
             await ctx.send("you are no longer LFG")
         else:
             LFG.append(userID)
             await ctx.send("you are now looking for game")
-    
+    with open(r'C:\Users\nlind\Downloads\Trice_Tourney_Utitility\Toby\Trice Tourney Utitility\players.json', "w") as send:
+        json.dump(data, send, indent=4)
     
 @bot.command(name='isLFG')
 async def isLFG(ctx):
@@ -175,12 +176,15 @@ async def isLFG(ctx):
         for index, value in enumerate(LFG): 
             print(index, value) 
             await ctx.send(value)
-        else: 
-            await ctx.send("lol you're not the illustrious JimWolfie")
+    else: 
+        await ctx.send("lol you're not the illustrious JimWolfie")
         # names = await client.fetch_user((value))
         # await ctx.send(names)
         
-        
+@bot.command(name='howBig')
+async def howBig(ctx):
+    result = "LFG queue is {}".format(len(LFG)) 
+    await ctx.send(result)
 
         
     
